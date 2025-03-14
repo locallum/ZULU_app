@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="main.js"></script>
+    <title>Zulu Web API</title>
+</head>
+<body>
+    <h1>Search Population Data</h1>
+    <form id="search-form">
+        <label for="graph-title">Graph Title:</label>
+        <input type="text" id="graph-title" required>
+        
+        <label for="x-header">X-Header:</label>
+        <input type="text" id="x-header" required>
+
+        <label for="y-header">Y-Header:</label>
+        <input type="text" id="y-header" required>
+
+        <label for="start-year">Start Year:</label>
+        <input type="number" id="start-year" required>
+
+        <label for="end-year">End Year:</label>
+        <input type="number" id="end-year" required>
+
+        <label for="suburb">Suburb:</label>
+        <input type="text" id="suburb" required>
+
+        <button type="button" onclick="generateGraphSingle()">Search</button>
+    </form>
+
+    <div id="results"></div>
+</body>
+</html>
