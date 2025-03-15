@@ -1,0 +1,71 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    margin-left: 40px;
+    margin-top: 40px;
+    font-family: Arial;
+}
+
+h1 {
+    font-size: 60px;
+}
+
+main {
+    display: flex;
+}
+
+#search-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Optional: Adds spacing between form fields */
+}
+
+#search-form div {
+    display: flex;
+    align-items: center;
+    width: 300px; /* Set fixed width for the container */
+}
+
+#search-form label {
+    white-space: nowrap; /* Prevent label text from wrapping */
+    font-size: 16px;
+    margin-right: 10px; /* Space between label and input */
+}
+
+#search-form input {
+    flex-grow: 1; /* Makes input flexible to fill remaining space */
+    height: 40px;
+    padding: 0 10px;
+    font-size: 14px;
+}
+
+.input-box {
+    margin-top: 50px;
+    font-size: 30px;
+    font-weight: bold;
+    color: rgb(45, 45, 45);
+}
+
+#generate-button {
+    width: 300px;
+    height: 60px;
+    margin-top: 20px;
+    font-size: 30px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    border-radius: 12px;
+}
+
+#results {
+    margin-top: 30px;
+    margin-left: 50px;
+    height: 700px;
+    width: 1200px;
+    background-color: lightblue;
+    border: 2px black solid;
+    border-radius: 10px;
+}
