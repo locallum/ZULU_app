@@ -21,26 +21,26 @@ main {
 #search-form {
     display: flex;
     flex-direction: column;
-    gap: 10px; /* Optional: Adds spacing between form fields */
+    gap: 10px;
 }
 
 #search-form div {
     display: flex;
     align-items: center;
-    width: 300px; /* Set fixed width for the container */
+    width: 300px;
 }
 
 #search-form label {
-    white-space: nowrap; /* Prevent label text from wrapping */
-    font-size: 16px;
-    margin-right: 10px; /* Space between label and input */
+    white-space: nowrap;
+    font-size: 20px;
+    margin-right: 10px;
 }
 
 #search-form input {
-    flex-grow: 1; /* Makes input flexible to fill remaining space */
+    flex-grow: 1;
     height: 40px;
-    padding: 0 10px;
-    font-size: 14px;
+    padding: 0 8px;
+    font-size: 16px;
 }
 
 .input-box {
