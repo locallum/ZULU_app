@@ -1,6 +1,6 @@
 {
     "scripts": {
-        "test": "jest"
+        "test": "jest --coverage"
     },
     "devDependencies": {
         "@babel/core": "^7.26.10",
@@ -14,7 +14,9 @@
         "transform": {
             "^.+\\.[t|j]sx?$": "babel-jest"
         },
-        "setupFiles": ["./jest.setup.js"]
+        "setupFiles": ["./jest.setup.js"],
+        "collectCoverage": true,
+        "coverageDirectory": "coverage",
+        "coverageReporters": ["text", "lcov"]
     }
-
 }
