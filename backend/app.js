@@ -1,17 +1,7 @@
 const retrievalURL = 'https://slzykzeusf.execute-api.us-east-1.amazonaws.com/test';
 const visualisationURL = 'https://f8jc59emd2.execute-api.us-east-1.amazonaws.com/dev/';
 
-export async function generateGraphSingle() {
-    // graph only
-    const title = document.getElementById("graph-title").value;
-    const x_header = document.getElementById("x-header").value;
-    const y_header = document.getElementById("y-header").value;
-
-    // data fetch input
-    const startYear = document.getElementById("start-year").value;
-    const endYear = document.getElementById("end-year").value;
-    const suburb = document.getElementById("suburb").value;
-
+export async function generateGraphSingle(startYear, endYear, suburb, title, x_header, y_header) {
     try {
         const retrievalOutput = await retrieveSingle(startYear, endYear, suburb);
         if (!retrievalOutput) {
@@ -25,39 +15,30 @@ export async function generateGraphSingle() {
             retrievalOutput.years,
             retrievalOutput.suburbPopulationEstimate
         );
-        if (!visualisationOutput) {
+        if (!visualisationOutput || !visualisationOutput.image) {
             throw new Error("Failed to generate visualisation.");
         }
 
-        return visualisationOutput.url;
+        return visualisationOutput.image;
     } catch (error) {
         console.error("Failed to generate graph:", error.message);
         return null;
     }
 }
 
+
 async function retrieveSingle(start, end, suburb) {
     try {
         const params = new URLSearchParams({ startyear: start, endyear: end, suburb: suburb });
-
         const response = await fetch(`${retrievalURL}?${params}`);
         if (!response.ok) {
             throw new Error('RetrievalAPI failed');
         }
-
         const data = await response.json();
-
-        /* data json
-        {
-            "suburbPopulationEstimate": [],
-            "years": []
-        }
-        */
-
         console.log(data);
         return data;
     } catch (error) {
-        console.error(error);
+        console.error(error.message);
     }
 }
 
@@ -74,18 +55,10 @@ async function visualisationSingle(title, x_header, y_header, x_data, y_data) {
         if (!response.ok) {
             throw new Error('VisualisationAPI failed');
         }
-
         const data = await response.json();
-
-        /* data json
-        {
-            "url": ""
-        }
-        */
-
         console.log(data);
         return data;
     } catch (error) {
-        console.error(error);
+        console.error(error.message);
     }
 }
