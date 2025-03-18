@@ -1,4 +1,4 @@
-const { generateGraphSingle } = require('./app'); // Adjust the path as needed
+const { generateGraphSingle } = require('./app');
 const fetchMock = require('jest-fetch-mock');
 
 describe('generateGraphSingle - User Stories', () => {
