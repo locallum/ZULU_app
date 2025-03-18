@@ -37,7 +37,7 @@ async function retrieveSingle(start, end, suburb) {
         console.log(data);
         return data;
     } catch (error) {
-        console.error(error);
+        console.error(error.message);
     }
 }
 
@@ -58,6 +58,6 @@ async function visualisationSingle(title, x_header, y_header, x_data, y_data) {
         console.log(data);
         return data;
     } catch (error) {
-        console.error(error);
+        console.error(error.message);
     }
 }

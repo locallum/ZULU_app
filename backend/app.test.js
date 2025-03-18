@@ -1,41 +1,44 @@
-// generateGraph.test.js
 const { generateGraphSingle } = require('./app'); // Adjust the path as needed
 const fetchMock = require('jest-fetch-mock');
 
-describe('generateGraphSingle', () => {
+describe('generateGraphSingle - User Stories', () => {
 
     beforeEach(() => {
         fetchMock.resetMocks();
     });
 
-    it('should return a graph URL when retrieval and visualisation succeed', async () => {
-        // Mock the retrieval function
+    it('should return a graph URL for government user with long-term data', async () => {
         const mockRetrievalData = {
-            years: [2020, 2021],
-            suburbPopulationEstimate: [5000, 5100]
+            years: [2000, 2005, 2010, 2015, 2020],
+            suburbPopulationEstimate: [10000, 10500, 11000, 11500, 12000]
         };
         const mockVisualisationData = {
-            url: 'https://example.com/graph.png'
+            url: 'https://example.com/government-graph.png'
         };
 
-        // Mocking fetch calls for retrieveSingle and visualisationSingle
         fetchMock.mockResponseOnce(JSON.stringify(mockRetrievalData)); // mock for retrieveSingle
         fetchMock.mockResponseOnce(JSON.stringify(mockVisualisationData)); // mock for visualisationSingle
 
-        // Run the function and check the result
-        const result = await generateGraphSingle(2020, 2021, 'TestSuburb', 'TestTitle', 'X Header', 'Y Header');
+        const result = await generateGraphSingle(2000, 2020, 'GovSuburb', 'GovTitle', 'Year', 'Population');
         
-        expect(result).toBe('https://example.com/graph.png');
+        expect(result).toBe('https://example.com/government-graph.png');
     });
 
-    it('should return null when retrieval fails', async () => {
-        // Mock the retrieval function to fail
-        fetchMock.mockRejectOnce(new Error('RetrievalAPI failed'));
+    it('should return a graph URL for corporate user with short-term data', async () => {
+        const mockRetrievalData = {
+            years: [2021, 2022, 2023],
+            suburbPopulationEstimate: [7000, 7200, 7400]
+        };
+        const mockVisualisationData = {
+            url: 'https://example.com/corporate-graph.png'
+        };
 
-        // Run the function and check the result
-        const result = await generateGraphSingle(2020, 2021, 'TestSuburb', 'TestTitle', 'X Header', 'Y Header');
+        fetchMock.mockResponseOnce(JSON.stringify(mockRetrievalData)); // mock for retrieveSingle
+        fetchMock.mockResponseOnce(JSON.stringify(mockVisualisationData)); // mock for visualisationSingle
+
+        const result = await generateGraphSingle(2021, 2023, 'CorpSuburb', 'CorpTitle', 'Year', 'Population');
         
-        expect(result).toBeNull();
+        expect(result).toBe('https://example.com/corporate-graph.png');
     });
 
 });
