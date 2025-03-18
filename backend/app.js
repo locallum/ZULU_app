@@ -15,16 +15,17 @@ export async function generateGraphSingle(startYear, endYear, suburb, title, x_h
             retrievalOutput.years,
             retrievalOutput.suburbPopulationEstimate
         );
-        if (!visualisationOutput) {
+        if (!visualisationOutput || !visualisationOutput.image) {
             throw new Error("Failed to generate visualisation.");
         }
 
-        return visualisationOutput.url;
+        return visualisationOutput.image;
     } catch (error) {
         console.error("Failed to generate graph:", error.message);
         return null;
     }
 }
+
 
 async function retrieveSingle(start, end, suburb) {
     try {
