@@ -63,9 +63,20 @@ main {
 #results {
     margin-top: 30px;
     margin-left: 50px;
-    height: 700px;
-    width: 1200px;
+    width: 960px;    /* Full width of the available space */
+    height: 700px;   /* Fixed height */
     background-color: lightblue;
     border: 2px black solid;
     border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;   /* Padding inside the results box to avoid image overlay */
+    box-sizing: border-box; /* Ensure padding doesn't affect the width/height */
+}
+
+#results img {
+    width: 960px;
+    height: 700px;
+    object-fit: cover;  /* Keep aspect ratio and scale within container */
 }

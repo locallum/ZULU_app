@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <script src="main.js"></script>
+    <script src="main.js" type="module"></script>
     <title>Zulu Web API</title>
 </head>
 <body>
@@ -15,35 +15,25 @@
                 <label for="graph-title">Graph Title:</label>
                 <input type="text" id="graph-title" required>
             </div>
-    
-            <div class="input-box">
-                <label for="x-header">X-Header:</label>
-                <input type="text" id="x-header" required>
-            </div>
-    
-            <div class="input-box">
-                <label for="y-header">Y-Header:</label>
-                <input type="text" id="y-header" required>
-            </div>
-    
+        
             <div class="input-box">
                 <label for="start-year">Start Year:</label>
                 <input type="number" id="start-year" required>     
             </div>
-    
+        
             <div class="input-box">
                 <label for="end-year">End Year:</label>
                 <input type="number" id="end-year" required>
             </div>
-    
+        
             <div class="input-box">
                 <label for="suburb">Suburb:</label>
                 <input type="text" id="suburb" required>
             </div>
-    
+        
             <button type="button" id="generate-button">Generate</button>
-        </form>
-
+            <button type="button" id="reset-button">Reset</button> <!-- Reset button added here -->
+        </form>        
         
         <div id="results">
         
