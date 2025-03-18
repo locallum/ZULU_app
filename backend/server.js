@@ -23,14 +23,20 @@ app.get('/retrieve', async (req, res) => {
     }
 });
 
-// Route for handling the visualisation API request
 app.get('/visualisation', async (req, res) => {
     const { title, x_header, y_header, x_data, y_data } = req.query;
-    const visualisationURL = 'https://f8jc59emd2.execute-api.us-east-1.amazonaws.com/dev/';
+
+    const visualisationURL = 'https://f8jc59emd2.execute-api.us-east-1.amazonaws.com/dev/population/visualisation/v1';
     
     try {
         const response = await axios.get(visualisationURL, {
-            params: { title, x_header, y_header, x_data, y_data }
+            params: {
+                "graphTitle": title,
+                "x-header": x_header,
+                "y-header": y_header,
+                "x-data": "2030, 2040",
+                "y-data": "1000",
+            }
         });
         res.json(response.data);
     } catch (error) {
