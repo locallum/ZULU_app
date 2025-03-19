@@ -23,20 +23,31 @@ app.get('/retrieve', async (req, res) => {
     }
 });
 
-// Route for handling the visualisation API request
 app.get('/visualisation', async (req, res) => {
     const { title, x_header, y_header, x_data, y_data } = req.query;
-    const visualisationURL = 'https://f8jc59emd2.execute-api.us-east-1.amazonaws.com/dev/';
+
+    // Convert x_data and y_data from strings to arrays
+    const xDataArray = x_data ? x_data.split(',') : [];
+    const yDataArray = y_data ? y_data.split(',') : [];
+
+    const visualisationURL = 'https://f8jc59emd2.execute-api.us-east-1.amazonaws.com/dev/population/visualisation/v1';
     
     try {
         const response = await axios.get(visualisationURL, {
-            params: { title, x_header, y_header, x_data, y_data }
+            params: {
+                "graphTitle": title,
+                "x-header": x_header,
+                "y-header": y_header,
+                "x-data": x_data,
+                "y-data": y_data
+            },
         });
         res.json(response.data);
     } catch (error) {
         res.status(500).send('Error fetching data from visualisation API');
     }
 });
+
 
 // Start the server
 app.listen(port, () => {

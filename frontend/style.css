@@ -36,11 +36,17 @@ main {
     margin-right: 10px;
 }
 
-#search-form input {
+#search-form input, 
+#search-form select {
     flex-grow: 1;
     height: 40px;
     padding: 0 8px;
     font-size: 16px;
+}
+
+/* Add this CSS to match the size of the dropdown with input fields */
+#search-form select {
+    width: 100%; /* Ensure select takes up the same width as input fields */
 }
 
 .input-box {
@@ -63,9 +69,40 @@ main {
 #results {
     margin-top: 30px;
     margin-left: 50px;
-    height: 700px;
-    width: 1200px;
+    width: 960px;    /* Full width of the available space */
+    height: 700px;   /* Fixed height */
     background-color: lightblue;
     border: 2px black solid;
     border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;   /* Padding inside the results box to avoid image overlay */
+    box-sizing: border-box; /* Ensure padding doesn't affect the width/height */
+}
+
+#results img {
+    width: 960px;
+    height: 700px;
+    object-fit: cover;  /* Keep aspect ratio and scale within container */
+}
+
+.select2-container {
+    width: 100% !important; /* Ensure it matches input size */
+}
+
+.select2-selection {
+    height: 40px !important;
+    display: flex !important;
+    align-items: center !important;
+    font-size: 16px;
+}
+
+.select2-selection__arrow {
+    height: 40px !important;
+}
+
+/* Move the delete (clear) button to the far right */
+.select2-container--default .select2-selection__clear {
+    right: -6px;  /* Move the cross button to the far right */
 }
