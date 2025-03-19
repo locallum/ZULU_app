@@ -1,16 +1,169 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <script src="main.js" type="module"></script>
-    <title>Zulu Web API</title>
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style.css">
+    
+        <!-- Select2 CSS -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet">
+    
+        <script src="main.js" type="module"></script>
+    
+        <!-- jQuery & Select2 JS -->
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+    
+        <title>Zulu Web API</title>
+    </head>
+    
 <body>
     <h1>Population Data Projection</h1>
     <main>
         <form id="search-form">
+            <div class="input-box">
+                <label for="suburb-selection">Analysis Type:</label>
+                <select id="suburb-selection" required>
+                    <option value="single">Single Suburb</option>
+                    <option value="multiple">Multiple Suburbs</option>
+                </select>
+            </div>
+
+            <div class="input-box">
+                <label for="suburb">Suburb:</label>
+                <select id="suburb" class="select2" required>
+                    <option value="Albury">Albury</option>
+                    <option value="Armidale">Armidale</option>
+                    <option value="Ballina">Ballina</option>
+                    <option value="Balranald">Balranald</option>
+                    <option value="Bathurst">Bathurst</option>
+                    <option value="Bayside (NSW)">Bayside (NSW)</option>
+                    <option value="Bega Valley">Bega Valley</option>
+                    <option value="Bellingen">Bellingen</option>
+                    <option value="Berrigan">Berrigan</option>
+                    <option value="Blacktown">Blacktown</option>
+                    <option value="Bland">Bland</option>
+                    <option value="Blayney">Blayney</option>
+                    <option value="Blue Mountains">Blue Mountains</option>
+                    <option value="Bogan">Bogan</option>
+                    <option value="Bourke">Bourke</option>
+                    <option value="Brewarrina">Brewarrina</option>
+                    <option value="Broken Hill">Broken Hill</option>
+                    <option value="Burwood">Burwood</option>
+                    <option value="Byron">Byron</option>
+                    <option value="Cabonne">Cabonne</option>
+                    <option value="Camden">Camden</option>
+                    <option value="Campbelltown (NSW)">Campbelltown (NSW)</option>
+                    <option value="Canada Bay">Canada Bay</option>
+                    <option value="Canterbury-Bankstown">Canterbury-Bankstown</option>
+                    <option value="Carrathool">Carrathool</option>
+                    <option value="Central Coast (NSW)">Central Coast (NSW)</option>
+                    <option value="Central Darling">Central Darling</option>
+                    <option value="Cessnock">Cessnock</option>
+                    <option value="Clarence Valley">Clarence Valley</option>
+                    <option value="Cobar">Cobar</option>
+                    <option value="Coffs Harbour">Coffs Harbour</option>
+                    <option value="Coolamon">Coolamon</option>
+                    <option value="Coonamble">Coonamble</option>
+                    <option value="Cootamundra-Gundagai">Cootamundra-Gundagai</option>
+                    <option value="Cowra">Cowra</option>
+                    <option value="Cumberland">Cumberland</option>
+                    <option value="Dubbo Regional">Dubbo Regional</option>
+                    <option value="Dungog">Dungog</option>
+                    <option value="Edward River">Edward River</option>
+                    <option value="Eurobodalla">Eurobodalla</option>
+                    <option value="Fairfield">Fairfield</option>
+                    <option value="Federation">Federation</option>
+                    <option value="Forbes">Forbes</option>
+                    <option value="Georges River">Georges River</option>
+                    <option value="Gilgandra">Gilgandra</option>
+                    <option value="Glen Innes Severn">Glen Innes Severn</option>
+                    <option value="Goulburn Mulwaree">Goulburn Mulwaree</option>
+                    <option value="Greater Hume Shire">Greater Hume Shire</option>
+                    <option value="Griffith">Griffith</option>
+                    <option value="Gunnedah">Gunnedah</option>
+                    <option value="Gwydir">Gwydir</option>
+                    <option value="Hawkesbury">Hawkesbury</option>
+                    <option value="Hay">Hay</option>
+                    <option value="Hilltops">Hilltops</option>
+                    <option value="Hornsby">Hornsby</option>
+                    <option value="Hunters Hill">Hunters Hill</option>
+                    <option value="Inner West">Inner West</option>
+                    <option value="Inverell">Inverell</option>
+                    <option value="Junee">Junee</option>
+                    <option value="Kempsey">Kempsey</option>
+                    <option value="Kiama">Kiama</option>
+                    <option value="Ku-ring-gai">Ku-ring-gai</option>
+                    <option value="Kyogle">Kyogle</option>
+                    <option value="Lachlan">Lachlan</option>
+                    <option value="Lake Macquarie">Lake Macquarie</option>
+                    <option value="Lane Cove">Lane Cove</option>
+                    <option value="Leeton">Leeton</option>
+                    <option value="Lismore">Lismore</option>
+                    <option value="Lithgow">Lithgow</option>
+                    <option value="Liverpool">Liverpool</option>
+                    <option value="Liverpool Plains">Liverpool Plains</option>
+                    <option value="Lockhart">Lockhart</option>
+                    <option value="Maitland">Maitland</option>
+                    <option value="Mid-Coast">Mid-Coast</option>
+                    <option value="Mid-Western Regional">Mid-Western Regional</option>
+                    <option value="Moree Plains">Moree Plains</option>
+                    <option value="Mosman">Mosman</option>
+                    <option value="Murray River">Murray River</option>
+                    <option value="Murrumbidgee">Murrumbidgee</option>
+                    <option value="Muswellbrook">Muswellbrook</option>
+                    <option value="Nambucca Valley">Nambucca Valley</option>
+                    <option value="Narrabri">Narrabri</option>
+                    <option value="Narrandera">Narrandera</option>
+                    <option value="Narromine">Narromine</option>
+                    <option value="Newcastle">Newcastle</option>
+                    <option value="North Sydney">North Sydney</option>
+                    <option value="Northern Beaches">Northern Beaches</option>
+                    <option value="Oberon">Oberon</option>
+                    <option value="Orange">Orange</option>
+                    <option value="Parkes">Parkes</option>
+                    <option value="Parramatta">Parramatta</option>
+                    <option value="Penrith">Penrith</option>
+                    <option value="Port Macquarie-Hastings">Port Macquarie-Hastings</option>
+                    <option value="Port Stephens">Port Stephens</option>
+                    <option value="Queanbeyan-Palerang Regional">Queanbeyan-Palerang Regional</option>
+                    <option value="Randwick">Randwick</option>
+                    <option value="Richmond Valley">Richmond Valley</option>
+                    <option value="Ryde">Ryde</option>
+                    <option value="Shellharbour">Shellharbour</option>
+                    <option value="Shoalhaven">Shoalhaven</option>
+                    <option value="Singleton">Singleton</option>
+                    <option value="Snowy Monaro Regional">Snowy Monaro Regional</option>
+                    <option value="Snowy Valleys">Snowy Valleys</option>
+                    <option value="Strathfield">Strathfield</option>
+                    <option value="Sutherland Shire">Sutherland Shire</option>
+                    <option value="Sydney">Sydney</option>
+                    <option value="Tamworth Regional">Tamworth Regional</option>
+                    <option value="Temora">Temora</option>
+                    <option value="Tenterfield">Tenterfield</option>
+                    <option value="The Hills Shire">The Hills Shire</option>
+                    <option value="Tweed">Tweed</option>
+                    <option value="Unincorporated NSW">Unincorporated NSW</option>
+                    <option value="Upper Hunter Shire">Upper Hunter Shire</option>
+                    <option value="Upper Lachlan Shire">Upper Lachlan Shire</option>
+                    <option value="Uralla">Uralla</option>
+                    <option value="Wagga Wagga">Wagga Wagga</option>
+                    <option value="Walcha">Walcha</option>
+                    <option value="Walgett">Walgett</option>
+                    <option value="Warren">Warren</option>
+                    <option value="Warrumbungle Shire">Warrumbungle Shire</option>
+                    <option value="Waverley">Waverley</option>
+                    <option value="Weddin">Weddin</option>
+                    <option value="Wentworth">Wentworth</option>
+                    <option value="Willoughby">Willoughby</option>
+                    <option value="Wingecarribee">Wingecarribee</option>
+                    <option value="Wollondilly">Wollondilly</option>
+                    <option value="Wollongong">Wollongong</option>
+                    <option value="Woollahra">Woollahra</option>
+                    <option value="Yass Valley">Yass Valley</option>
+                </select>
+            </div>       
+
             <div class="input-box">
                 <label for="graph-title">Graph Title:</label>
                 <input type="text" id="graph-title" required>
@@ -24,20 +177,15 @@
             <div class="input-box">
                 <label for="end-year">End Year:</label>
                 <input type="number" id="end-year" required>
-            </div>
-        
-            <div class="input-box">
-                <label for="suburb">Suburb:</label>
-                <input type="text" id="suburb" required>
-            </div>
+            </div>    
         
             <button type="button" id="generate-button">Generate</button>
-            <button type="button" id="reset-button">Reset</button> <!-- Reset button added here -->
+            <button type="button" id="download-button" style="display: none;">Download</button>
+            <button type="button" id="reset-button">Reset</button>
+
         </form>        
         
-        <div id="results">
-        
-        </div>
+        <div id="results"></div>
     </main>
 </body>
 </html>
