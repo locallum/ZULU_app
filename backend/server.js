@@ -26,6 +26,10 @@ app.get('/retrieve', async (req, res) => {
 app.get('/visualisation', async (req, res) => {
     const { title, x_header, y_header, x_data, y_data } = req.query;
 
+    // Convert x_data and y_data from strings to arrays
+    const xDataArray = x_data ? x_data.split(',') : [];
+    const yDataArray = y_data ? y_data.split(',') : [];
+
     const visualisationURL = 'https://f8jc59emd2.execute-api.us-east-1.amazonaws.com/dev/population/visualisation/v1';
     
     try {
@@ -34,15 +38,16 @@ app.get('/visualisation', async (req, res) => {
                 "graphTitle": title,
                 "x-header": x_header,
                 "y-header": y_header,
-                "x-data": "2030, 2040",
-                "y-data": "1000",
-            }
+                "x-data": x_data,
+                "y-data": y_data
+            },
         });
         res.json(response.data);
     } catch (error) {
         res.status(500).send('Error fetching data from visualisation API');
     }
 });
+
 
 // Start the server
 app.listen(port, () => {
