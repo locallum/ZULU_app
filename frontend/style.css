@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap');
+
 * {
     margin: 0;
     padding: 0;
@@ -7,7 +9,7 @@
 body {
     margin-left: 40px;
     margin-top: 40px;
-    font-family: Arial;
+    font-family: 'Montserrat', sans-serif;
 }
 
 h1 {
@@ -62,7 +64,7 @@ main {
     margin-top: 20px;
     font-size: 30px;
     font-weight: 600;
-    letter-spacing: 3px;
+    letter-spacing: 1px;
     border-radius: 12px;
 }
 
