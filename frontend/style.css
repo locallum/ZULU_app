@@ -73,7 +73,7 @@ main {
     margin-left: 50px;
     width: 960px;    /* Full width of the available space */
     height: 700px;   /* Fixed height */
-    background-color: lightblue;
+    background-color: white;
     border: 2px black solid;
     border-radius: 10px;
     display: flex;
@@ -85,8 +85,7 @@ main {
 
 #results img {
     width: 960px;
-    height: 700px;
-    object-fit: cover;  /* Keep aspect ratio and scale within container */
+    height: 680px;
 }
 
 .select2-container {
